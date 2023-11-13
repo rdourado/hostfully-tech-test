@@ -1,7 +1,17 @@
-import "@mantine/core/styles.css";
-import { MantineProvider } from "@mantine/core";
-import { theme } from "./theme";
+import { Route } from 'wouter';
+import DefaultView from './layout/DefaultView';
+import BookingsView from './bookings/BookingsView';
+import EditBooking from './bookings/EditBooking';
+import DeleteBooking from './bookings/DeleteBooking';
 
-export default function App() {
-  return <MantineProvider theme={theme}>App</MantineProvider>;
+function App() {
+  return (
+    <DefaultView>
+      <BookingsView />
+      <Route path="/edit/:index" component={EditBooking} />
+      <Route path="/delete/:index" component={DeleteBooking} />
+    </DefaultView>
+  );
 }
+
+export default App;
